@@ -1,0 +1,25 @@
+extends layout
+
+block content
+  h1= title
+
+  if (toShow == null)
+    h2 No instance to Show to details 
+  else
+    - let carid = toShow._id
+    - let carName = toShow.carName
+    - let carcolor = toShow.carcolor
+    - let carcount = toShow.carcount
+    div
+      div.row
+        div(class='carAttr mr-3') Car ID is:
+        div #{carid}
+      div.row
+        div(class='carAttr mr-3') Car Name is:
+        div #{carName}
+      div.row
+        div(class='carAttr mr-3') Car Color is:
+        div #{carcolor}
+      div.row
+        div(class='carAttr mr-3') Car Count is:
+        div #{carcount}
