@@ -5,11 +5,19 @@ block content
   -var results = results
 
   div(class= "container-fluid")
-    div(class = "row")  
+    div(class = "row m-1")  
       each item,index in results
-        div(class= "col-sm-2", onclick=`buy(${index})`) car name: &nbsp; #{item.carName} car color: &nbsp; #{item.carcolor} car count:  &nbsp; #{item.carcount}
+        - let destination = `dispatch(\"/car/update?id=${item._id}\")`
+        div(class= "col-sm-2", onclick=`buy(${index})`) car name: &nbsp; #{item.carName} car color: &nbsp; #{item.carcolor} car count:  &nbsp; #{item.carcount}<br/>
+         button.btn( class="btn-primary ml-1", onclick= destination) Update
+         
 
   script.
     function buy(itemNum){
       alert(`You purchased item ${itemNum+1}`)
+    }
+
+  script.
+    function dispatch(path){
+      window.location.href=path
     }
