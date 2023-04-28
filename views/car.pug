@@ -1,15 +1,23 @@
 extends layout
 
 block content
+  a(href='/car/create') Create new Car Object
   h1= title
   -var results = results
 
   div(class= "container-fluid")
     div(class = "row m-1")  
       each item,index in results
-        - let destination = `dispatch(\"/car/update?id=${item._id}\")`
+        - let UpDest = `dispatch(\"/car/update?id=${item._id}\")`
+        - let detDest = `dispatch(\"/car/detail?id=${item._id}\")`
+        - let delDest = `dispatch(\"/car/delete?id=${item._id}\")`
         div(class= "col-sm-2", onclick=`buy(${index})`) car name: &nbsp; #{item.carName} car color: &nbsp; #{item.carcolor} car count:  &nbsp; #{item.carcount}<br/>
-         button.btn( class="btn-primary ml-1", onclick= destination) Update
+         button.btn( class="btn-success ml-1", onclick= UpDest) Update
+         <br>
+         button.btn( class="btn-info ml-1", onclick= detDest) Detail
+         <br>
+         button.btn( class="btn-warning ml-1", onclick= delDest) Delete
+
          
 
   script.
